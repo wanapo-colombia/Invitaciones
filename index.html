@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="color-scheme" content="light">
+  <!------------------------Titulo Pestaña-------------------------------------------->
+  <title>Nuestra Boda - Gustavo & Nancy</title>
+
+  <meta name="description" content="Invitación a la boda de Gustavo y Nancy" />
+  <meta property="og:title" content="Nuestra Boda - Gustavo & Nancy" />
+  <meta property="og:description" content="Nos casamos y queremos celebrarlo contigo" />
+  <meta property="og:type" content="website" />
+
+   <!--------------------- Familia de fuentes ----------------------------------------->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!----------------------------------------------------------------------------------->
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="locked">
+
+  <!-----------Audio--------------------------------------------------------------------
+
+  <audio id="bg-music" preload="auto" playsinline>
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="floating-layer" class="floating-layer" aria-hidden="true"></div>
+
+  <button id="music-btn" class="music-btn" type="button" aria-label="Activar o pausar música">
+    <i class="fas fa-music" aria-hidden="true"></i>
+    <span class="music-btn__text">Activar música</span>
+  </button>
+
+  <div id="music-hint" class="music-hint" role="status" aria-live="polite">
+    <strong>Tip:</strong> si no escuchas la canción, toca el botón para activarla.
+  </div>
+
+  ------------------------------------------------------------------------------------->
+
+  <!------------------------ Pantalla de apertura ------------------------------------->
+
+  <div id="intro-screen" aria-label="Pantalla de apertura de invitación">
+    <div class="intro-kicker">Nos casamos</div>
+    <h2 class="intro-title">Gustavo &amp; Nancy</h2>
+    <div class="intro-subtitle">18 de Octubre, 2026</div>
+
+    <!-- Se llena solo con JS si el link trae ?n= (ver main.js). Si no, queda oculto. -->
+    <div class="intro-guest hidden" id="intro-guest">
+      <span class="intro-guest__label">Invitación para</span>
+      <span class="intro-guest__nombre" id="intro-guest-nombre"></span>
+    </div>
+
+    <div class="envelope-wrapper" id="envelope" tabindex="0" role="button" aria-label="Abrir invitación">
+      <div class="envelope-back"></div>
+      <div class="letter-preview" aria-hidden="true"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
+      <div class="wax-seal">G&amp;N</div>
+    </div>
+
+    <p class="intro-help">Toca el sobre para abrir tu invitación.</p>
+    <div class="pulse-text">Toca para abrir</div>
+  </div>
+
+  <!--------------------------------------------------------------------------------->
+
+  <main class="container">
+
+    <!---------------------------------- Hero ----------------------------------------->
+    <section class="hero">
+      <svg class="hero-flourish top-left" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke="#e7cfa4" stroke-width="1.2" opacity=".55">
+          <path d="M10 10 C 60 5, 90 40, 70 80 C 50 118, 90 140, 130 120" />
+          <circle cx="70" cy="80" r="5" fill="#e7cfa4" stroke="none" />
+          <circle cx="130" cy="120" r="4" fill="#e7cfa4" stroke="none" />
+          <path d="M20 40 C 40 30, 55 45, 45 62" />
+        </g>
+      </svg>
+      <svg class="hero-flourish bottom-right" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke="#e7cfa4" stroke-width="1.2" opacity=".55">
+          <path d="M10 10 C 60 5, 90 40, 70 80 C 50 118, 90 140, 130 120" />
+          <circle cx="70" cy="80" r="5" fill="#e7cfa4" stroke="none" />
+          <circle cx="130" cy="120" r="4" fill="#e7cfa4" stroke="none" />
+          <path d="M20 40 C 40 30, 55 45, 45 62" />
+        </g>
+      </svg>
+
+      <div class="hero-kicker">Nuestra boda</div>
+      <h1 class="hero-names">
+        Gustavo
+        <span class="hero-and">and</span>
+        Nancy
+      </h1>
+      <div class="hero-sub">Nos casamos</div>
+      <div class="hero-date">18 de Octubre, 2026</div>
+
+      <div class="scroll-cue">
+        <span>Desliza</span>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </div>
+    </section>
+    <!------------------------------------------------------------------------------->
+
+
+    <!--------------------------- Save the date -------------------------------------->
+    <section class="section reveal" aria-labelledby="savedate-title">
+      <div class="section-eyebrow">Falta poco</div>
+      <h2 id="savedate-title" class="section-title">Save the Date</h2>
+      <div class="section-divider"></div>
+
+      <div class="savedate-card">
+        <div class="countdown" id="countdown" aria-live="polite"></div>
+
+        <div class="couple-photo">
+          <span>Foto de<br>Gustavo &amp; Nancy</span>
+        </div>
+
+        <div class="savedate-date">18 de Octubre, 2026</div>
+        <p class="savedate-note">Guarda la fecha, queremos celebrar contigo este día tan especial.</p>
+      </div>
+    </section>
+
+    <!------------------------------------------------------------------------------>
+
+    <!--------------------------- Nuestros padres ---------------------------------->
+    <section class="section reveal" aria-labelledby="padres-title">
+      <div class="section-eyebrow">Con su bendición</div>
+      <h2 id="padres-title" class="section-title">Nuestros Padres</h2>
+      <div class="section-divider"></div>
+
+      <p class="padres-quote">"Con tu emoción y entusiasmo complementarás un día demasiado especial y esperado en nuestras vidas."</p>
+
+      <div class="padres-grid">
+        <div class="padres-col">
+          <div class="padres-col-label">Padres del novio</div>
+          <div class="padres-col-names">Antonio Gutiérrez Victoriano<br>Rosa Elena Martínez de Gutiérrez</div>
+        </div>
+        <div class="padres-col">
+          <div class="padres-col-label">Padres de la novia</div>
+          <div class="padres-col-names">Ernesto Ramírez Marcelino<br>Ángeles Torres Gómez de Ramírez</div>
+        </div>
+      </div>
+    </section>
+    <!------------------------------------------------------------------------------->
+
+
+
+    <!---------------------------Ceremonia ------------------------------------------->
+    <section class="section info-section reveal" aria-labelledby="ceremonia-title">
+      <div class="info-icon"><i class="fas fa-church" aria-hidden="true"></i></div>
+      <div class="section-eyebrow">Los esperamos</div>
+      <h2 id="ceremonia-title" class="section-title">Ceremonia</h2>
+      <div class="info-time">6:00 PM</div>
+      <p class="info-location">
+        Iglesia Santa Rafaela Maria<br>
+        Cra. 45 #170-36, Bogotá.
+      </p>
+      <a href="https://maps.app.goo.gl/nzTfa6XxoZVfqzXu9" target="_blank" rel="noopener noreferrer" class="map-btn">
+        <i class="fas fa-location-dot" aria-hidden="true"></i>
+        <span>Ver mapa</span>
+      </a>
+
+      <div class="map-frame">
+        <iframe
+          title="Mapa de la recepción"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.026142060716!2d-74.04689083583862!3d4.7518606011156095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f859b957d8a5f%3A0x15c4606b752af93a!2sIglesia%20Santa%20Rafaela%20Mar%C3%ADa!5e0!3m2!1ses!2sco!4v1787179004716!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+    </section>
+    <!------------------------------------------------------------------------------->
+
+    <!---------------------------- Recepción ---------------------------------------->
+    <section class="section info-section reveal" aria-labelledby="recepcion-title">
+      <div class="info-icon"><i class="fas fa-glass-cheers" aria-hidden="true"></i></div>
+      <div class="section-eyebrow">A celebrar</div>
+      <h2 id="recepcion-title" class="section-title">Recepción</h2>
+      <div class="info-time">8:00 PM</div>
+      <p class="info-location">
+        Salón de Eventos Wanapo<br>
+        Oficinas de Wanapo Colombia<br>
+        Cl. 165 #8H-60, Bogotá.
+      </p>
+      <a href="https://maps.app.goo.gl/KBAbvxCZjP9973Rr6" target="_blank" rel="noopener noreferrer" class="map-btn">
+        <i class="fas fa-location-dot" aria-hidden="true"></i>
+        <span>Ver mapa</span>
+      </a>
+
+      <div class="map-frame">
+        <iframe
+          title="Mapa de la recepción"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d497.01956806051567!2d-74.0313861372318!3d4.742841927169167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1787178715385!5m2!1ses!2sco" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+    </section>
+    <!--------------------------------------------------------------------------------->
+
+    <!-- --------------------------Dress code ------------------------------------------>
+    <section class="section reveal" aria-labelledby="dresscode-title">
+      <div class="dresscode-icons">
+        <i class="fas fa-shirt" aria-hidden="true"></i>
+        <i class="fas fa-person-dress" aria-hidden="true"></i>
+      </div>
+      <div class="section-eyebrow">Cómo vestir</div>
+      <h2 id="dresscode-title" class="section-title">Dress Code</h2>
+      <div class="dresscode-style">Formal casual</div>
+      <p class="dresscode-detail">Mujeres: vestido midi &nbsp;|&nbsp; Hombres: saco y camisa</p>
+    </section>
+    <!---------------------------------------------------------------------------------->
+
+    <!-----------------------------Confirmación ----------------------------------------->
+    <section class="section reveal" aria-labelledby="rsvp-title">
+      <div class="section-eyebrow">Antes del 1 de octubre</div>
+      <h2 id="rsvp-title" class="section-title">Confirmación de asistencia</h2>
+      <div class="section-divider"></div>
+
+      <!-- Se llena solo con JS si el link trae ?n= y &p= (ver main.js). Si no, queda oculto. -->
+      <div id="pase-reservado" class="pase-reservado hidden">
+        <div class="pase-reservado__label">Pase reservado para</div>
+        <div class="pase-reservado__nombre" id="pase-reservado-nombre"></div>
+        <div class="pase-reservado__personas" id="pase-reservado-personas"></div>
+      </div>
+
+      <form class="rsvp-card" id="rsvp-form">
+        <input type="hidden" id="invitado-id" name="invitado">
+        <div class="rsvp-toggle">
+          <input type="radio" name="asistencia" id="asiste-si" value="si" checked>
+          <label for="asiste-si">Asistiré</label>
+
+          <input type="radio" name="asistencia" id="asiste-no" value="no">
+          <label for="asiste-no">No podré asistir</label>
+        </div>
+
+        <div class="form-field" id="personas-field">
+          <label for="personas">Número de personas</label>
+          <select id="personas" name="personas">
+            <option value="1">1 Persona</option>
+            <option value="2" selected>2 Personas</option>
+            <option value="3">3 Personas</option>
+            <option value="4">4 Personas</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="nombre">Nombre de los asistentes</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana y Luis Martínez" required>
+        </div>
+
+        <div class="form-field">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej. 33 1234 5678">
+        </div>
+
+        <div class="form-field">
+          <label for="mensaje">Mensaje para los novios</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Escribe tu mensaje aquí"></textarea>
+        </div>
+
+        <button type="submit" class="rsvp-submit">Enviar confirmación</button>
+
+        <div id="rsvp-feedback" class="rsvp-feedback" aria-live="polite"></div>
+      </form>
+    </section>
+    <!-------------------------------------------------------------------------------------------------->
+
+    <!----------------------------------------Footer------------------------------------------------------>
+    <footer class="footer">
+      <div class="footer-names">Gustavo &amp; Nancy</div>
+      <p class="footer-note">Gracias por ser parte de nuestra historia y acompañarnos en el inicio de esta nueva etapa.</p>
+      <div class="sparkles">❖ ❖ ❖</div>
+    </footer>
+    <!------------------------------------------------------------------------------------------------------>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
