@@ -1,0 +1,345 @@
+<!----------------------------------------------------------------------------------->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="color-scheme" content="light">
+
+  <!------------------------Titulo Pestaña-------------------------------------------->
+  <title>Mis XV Años - Juanita Díaz Quimbayo</title>
+
+  <meta name="description" content="Invitación a los XV años de Juanita Díaz Quimbayo" />
+  <meta property="og:title" content="Mis XV Años - Juanita Díaz Quimbayo" />
+  <meta property="og:description" content="Entre sueños, estrellas y un poquito de magia, comienza mi nueva historia" />
+  <meta property="og:type" content="website" />
+
+   <!--------------------- Familia de fuentes ----------------------------------------->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!----------------------------------------------------------------------------------->
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<!----------------------------------------------------------------------------------->
+
+<body class="locked">
+
+  <!-----------Audio--------------------------------------------------------------------
+
+  <audio id="bg-music" preload="auto" playsinline>
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="floating-layer" class="floating-layer" aria-hidden="true"></div>
+
+  <button id="music-btn" class="music-btn" type="button" aria-label="Activar o pausar música">
+    <i class="fas fa-music" aria-hidden="true"></i>
+    <span class="music-btn__text">Activar música</span>
+  </button>
+
+  <div id="music-hint" class="music-hint" role="status" aria-live="polite">
+    <strong>Tip:</strong> si no escuchas la canción, toca el botón para activarla.
+  </div>
+
+  ------------------------------------------------------------------------------------->
+
+  <!------------------------ Pantalla de apertura ------------------------------------->
+
+  <div id="intro-screen" aria-label="Pantalla de apertura de invitación">
+    <div class="intro-kicker">Mis XV Años</div>
+    <h2 class="intro-title">Juanita</h2>
+    <div class="intro-subtitle">24 de Octubre, 2027</div>
+
+    <!-- Se llena solo con JS si el link trae ?n= (ver main.js). Si no, queda oculto. -->
+    <div class="intro-guest hidden" id="intro-guest">
+      <span class="intro-guest__label">Invitación para</span>
+      <span class="intro-guest__nombre" id="intro-guest-nombre"></span>
+    </div>
+
+    <div class="envelope-wrapper" id="envelope" tabindex="0" role="button" aria-label="Abrir invitación">
+      <div class="envelope-back"></div>
+      <div class="letter-preview" aria-hidden="true"></div>
+      <div class="envelope-flap"></div>
+      <div class="envelope-front"></div>
+      <div class="wax-seal">JD</div>
+    </div>
+
+    <p class="intro-help">Toca el sobre para abrir tu invitación.</p>
+    <div class="pulse-text">Toca para abrir</div>
+  </div>
+
+  <!--------------------------------------------------------------------------------->
+
+  <main class="container">
+
+    <!---------------------------------- Hero ----------------------------------------->
+    <section class="hero">
+      <svg class="hero-flourish top-left" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke="#e7cfa4" stroke-width="1.2" opacity=".55">
+          <path d="M10 10 C 60 5, 90 40, 70 80 C 50 118, 90 140, 130 120" />
+          <circle cx="70" cy="80" r="5" fill="#e7cfa4" stroke="none" />
+          <circle cx="130" cy="120" r="4" fill="#e7cfa4" stroke="none" />
+          <path d="M20 40 C 40 30, 55 45, 45 62" />
+        </g>
+      </svg>
+      <svg class="hero-flourish bottom-right" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="none" stroke="#e7cfa4" stroke-width="1.2" opacity=".55">
+          <path d="M10 10 C 60 5, 90 40, 70 80 C 50 118, 90 140, 130 120" />
+          <circle cx="70" cy="80" r="5" fill="#e7cfa4" stroke="none" />
+          <circle cx="130" cy="120" r="4" fill="#e7cfa4" stroke="none" />
+          <path d="M20 40 C 40 30, 55 45, 45 62" />
+        </g>
+      </svg>
+
+      <div class="hero-kicker">✨ Mis XV años ✨</div>
+      <h1 class="hero-names">
+        Juanita
+      </h1>
+      <div class="hero-sub">Díaz Quimbayo</div>
+      <div class="hero-date">24 de Octubre, 2027</div>
+
+      <p class="hero-quote">"Entre sueños, estrellas y un poquito de magia, comienza mi nueva historia. Quiero compartir este momento tan especial contigo." 💜</p>
+
+      <div class="scroll-cue">
+        <span>Desliza</span>
+        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+      </div>
+    </section>
+    <!------------------------------------------------------------------------------->
+
+
+    <!--------------------------- Save the date -------------------------------------->
+    <section class="section reveal" aria-labelledby="savedate-title">
+      <div class="section-eyebrow">Falta poco</div>
+      <h2 id="savedate-title" class="section-title">Save the Date</h2>
+      <div class="section-divider"></div>
+
+      <div class="savedate-card">
+        <div class="countdown" id="countdown" aria-live="polite"></div>
+
+        <div class="couple-photo" id="foto-principal-marco">
+          <span>Foto de<br>Juanita</span>
+          <img src="assets/foto-principal.webp" alt="Foto de Juanita" onload="this.parentElement.classList.add('has-photo')" onerror="this.style.display='none'">
+        </div>
+
+        <div class="savedate-date">24 de Octubre, 2027</div>
+        <p class="savedate-note">Guarda la fecha, quiero celebrar contigo esta noche tan especial.</p>
+      </div>
+    </section>
+
+    <!------------------------------------------------------------------------------>
+
+    <!--------------------------- Nuestros padres ---------------------------------->
+    <section class="section reveal" aria-labelledby="padres-title">
+      <div class="section-eyebrow">Con su bendición</div>
+      <h2 id="padres-title" class="section-title">Mi Familia</h2>
+      <div class="section-divider"></div>
+
+      <p class="padres-quote">"Con mucha ilusión, Juanita Díaz Quimbayo te invita a celebrar sus XV años."</p>
+
+      <div class="padres-grid">
+        <div class="padres-col">
+          <div class="padres-col-label">Tienen el honor de acompañarla</div>
+          <div class="padres-col-names">Yésica Quimbayo<br>Fernando Urrego</div>
+        </div>
+      </div>
+
+      <p class="padres-quote padres-quote--papa">
+        🕯️ Con el amor y la bendición de mi papá, que desde el cielo me acompaña en cada paso.
+      </p>
+    </section>
+    <!------------------------------------------------------------------------------->
+
+
+
+    <!---------------------------- Celebración ---------------------------------------->
+    <section class="section info-section reveal" aria-labelledby="celebracion-title">
+      <div class="info-icon"><i class="fas fa-glass-cheers" aria-hidden="true"></i></div>
+      <div class="section-eyebrow">A celebrar</div>
+      <h2 id="celebracion-title" class="section-title">Celebración</h2>
+      <div class="info-time">6:00 PM</div>
+      <p class="info-location">
+        <!-- TODO: reemplaza esto por el nombre y la dirección reales del lugar -->
+        SALON ROMANO - Av NQS #1-79, Puente Aranda, Bogotá
+      </p>
+      <!-- TODO: cuando tengas el lugar confirmado, reemplaza este href por el link de Google Maps del sitio -->
+      <a href="https://maps.app.goo.gl/1DSPttxC6Cv9Q3DF8" target="_blank" rel="noopener noreferrer" class="map-btn">
+        <i class="fas fa-location-dot" aria-hidden="true"></i>
+        <span>Ver mapa</span>
+      </a>
+
+      <div class="map-frame">
+        <iframe
+          title="Mapa de la recepción"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127262.97240571961!2d-74.25825700273438!3d4.59977490000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f993c85c26583%3A0x8827f535afc7971a!2sSALON%20ROMANO%20-%20ABSOLUT%20EVENTOS!5e0!3m2!1ses-419!2sco!4v1787287674331!5m2!1ses-419!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+      </div>
+
+    </section>
+
+    <!--------------------------------------------------------------------------------->
+
+    <!-- --------------------------Dress code ------------------------------------------>
+    <section class="section reveal" aria-labelledby="dresscode-title">
+      <div class="dresscode-icons">
+        <i class="fas fa-shirt" aria-hidden="true"></i>
+        <i class="fas fa-person-dress" aria-hidden="true"></i>
+      </div>
+      <div class="section-eyebrow">Cómo vestir</div>
+      <h2 id="dresscode-title" class="section-title">Código de Vestuario</h2>
+      <div class="dresscode-style">Elegante / Formal ✨</div>
+      <p class="dresscode-detail">Inspírate en el mágico mundo de Rapunzel.</p>
+      <p class="dresscode-detail">Se sugieren tonos lila, lavanda, rosa, dorado, verde y colores pastel. 🌸💜</p>
+    </section>
+    <!---------------------------------------------------------------------------------->
+
+    <!-------------------------- Cita final ---------------------------------------->
+    <section class="section reveal" aria-labelledby="cita-final">
+      <p class="cita-final" id="cita-final">
+        "Acompáñame a vivir una noche llena de magia, sueños y momentos que quedarán para siempre en mi corazón." ✨
+      </p>
+    </section>
+    <!---------------------------------------------------------------------------------->
+
+     <!---------------------------- Itinerario ---------------------------------------->
+    <!-- TODO: ajusta las horas exactas según cómo organices tu fiesta. Estas son las etapas típicas de una fiesta de XV. -->
+    <section class="section reveal" aria-labelledby="itinerario-title">
+      <div class="section-eyebrow">Así será la noche</div>
+      <h2 id="itinerario-title" class="section-title">Itinerario</h2>
+      <div class="section-divider"></div>
+
+      <ul class="itinerario-list">
+        <li class="itinerario-item">
+          <div class="itinerario-icon"><i class="fas fa-champagne-glasses" aria-hidden="true"></i></div>
+          <div class="itinerario-body">
+            <span class="itinerario-hora">6:00 PM</span>
+            <span class="itinerario-evento">Recepción de invitados</span>
+          </div>
+        </li>
+        <li class="itinerario-item">
+          <div class="itinerario-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
+          <div class="itinerario-body">
+            <span class="itinerario-hora">6:30 PM</span>
+            <span class="itinerario-evento">Entrada de la quinceañera</span>
+          </div>
+        </li>
+        <li class="itinerario-item">
+          <div class="itinerario-icon"><i class="fas fa-music" aria-hidden="true"></i></div>
+          <div class="itinerario-body">
+            <span class="itinerario-hora">6:45 PM</span>
+            <span class="itinerario-evento">Vals de honor</span>
+          </div>
+        </li>
+        <li class="itinerario-item">
+          <div class="itinerario-icon"><i class="fas fa-champagne-glasses" aria-hidden="true"></i></div>
+          <div class="itinerario-body">
+            <span class="itinerario-hora">7:00 PM</span>
+            <span class="itinerario-evento">Brindis</span>
+          </div>
+        </li>
+        <li class="itinerario-item">
+          <div class="itinerario-icon"><i class="fas fa-utensils" aria-hidden="true"></i></div>
+          <div class="itinerario-body">
+            <span class="itinerario-hora">7:30 PM</span>
+            <span class="itinerario-evento">Cena</span>
+          </div>
+        </li>
+        <li class="itinerario-item">
+          <div class="itinerario-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
+          <div class="itinerario-body">
+            <span class="itinerario-hora">8:30 PM</span>
+            <span class="itinerario-evento">Baile sorpresa</span>
+          </div>
+        </li>
+        <li class="itinerario-item">
+          <div class="itinerario-icon"><i class="fas fa-martini-glass-citrus" aria-hidden="true"></i></div>
+          <div class="itinerario-body">
+            <span class="itinerario-hora">9:00 PM</span>
+            <span class="itinerario-evento">Fiesta y baile abierto</span>
+          </div>
+        </li>
+        <li class="itinerario-item">
+          <div class="itinerario-icon"><i class="fas fa-moon" aria-hidden="true"></i></div>
+          <div class="itinerario-body">
+            <span class="itinerario-hora">11:30 PM</span>
+            <span class="itinerario-evento">Cierre de la celebración</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <!--------------------------------------------------------------------------------->
+
+    <!-----------------------------Confirmación ----------------------------------------->
+    <section class="section reveal" aria-labelledby="rsvp-title">
+      <div class="section-eyebrow">Antes del 10 de octubre</div>
+      <h2 id="rsvp-title" class="section-title">Confirmación de asistencia</h2>
+      <div class="section-divider"></div>
+
+      <!-- Se llena solo con JS si el link trae ?n= y &p= (ver main.js). Si no, queda oculto. -->
+      <div id="pase-reservado" class="pase-reservado hidden">
+        <div class="pase-reservado__label">Pase reservado para</div>
+        <div class="pase-reservado__nombre" id="pase-reservado-nombre"></div>
+        <div class="pase-reservado__personas" id="pase-reservado-personas"></div>
+      </div>
+
+      <form class="rsvp-card" id="rsvp-form">
+        <input type="hidden" id="invitado-id" name="invitado">
+        <div class="rsvp-toggle">
+          <input type="radio" name="asistencia" id="asiste-si" value="si" checked>
+          <label for="asiste-si">Asistiré</label>
+
+          <input type="radio" name="asistencia" id="asiste-no" value="no">
+          <label for="asiste-no">No podré asistir</label>
+        </div>
+
+        <div class="form-field" id="personas-field">
+          <label for="personas">Número de personas</label>
+          <select id="personas" name="personas">
+            <option value="1">1 Persona</option>
+            <option value="2" selected>2 Personas</option>
+            <option value="3">3 Personas</option>
+            <option value="4">4 Personas</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="nombre">Nombre de los asistentes</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Martínez" required>
+        </div>
+
+        <div class="form-field">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ej. 33 1234 5678">
+        </div>
+
+        <div class="form-field">
+          <label for="mensaje">Mensaje para los novios</label>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Escribe tu mensaje aquí"></textarea>
+        </div>
+
+        <button type="submit" class="rsvp-submit">Enviar confirmación</button>
+
+        <div id="rsvp-feedback" class="rsvp-feedback" aria-live="polite"></div>
+      </form>
+    </section>
+    <!-------------------------------------------------------------------------------------------------->
+
+    <!----------------------------------------Footer------------------------------------------------------>
+    <footer class="footer">
+      <div class="footer-names">Juanita Díaz Quimbayo</div>
+      <p class="footer-note">Gracias por ser parte de mi historia y acompañarme en el inicio de esta nueva etapa.</p>
+      <div class="sparkles">❖ ❖ ❖</div>
+    </footer>
+    <!------------------------------------------------------------------------------------------------------>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
